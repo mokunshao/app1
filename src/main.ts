@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from "express";
 const app = express();
 const port = 3000;
 
@@ -8,6 +8,6 @@ app.listen(port, () => {
   console.log("服务已启动");
 });
 
-app.get("/", (req, res) => {
-  res.send("hello");
+app.get("/", (request: Request, response: Response) => {
+  response.send("hello");
 });
