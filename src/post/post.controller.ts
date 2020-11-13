@@ -3,7 +3,11 @@ import { getPosts } from "./post.service";
 
 export const postController = {
   index: async (request: Request, response: Response, next: NextFunction) => {
-    const posts = await getPosts();
-    response.send(posts);
+    try {
+      const posts = await getPosts();
+      response.send(posts);
+    } catch (error) {
+      next(error);
+    }
   },
 };

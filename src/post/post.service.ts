@@ -3,7 +3,7 @@ import { connection } from "../app/database/mysql";
 export const getPosts = async () => {
   const statement = `
     SELECT
-      post.id,
+      post.id1,
       post.title,
       post.content,
       JSON_OBJECT(
