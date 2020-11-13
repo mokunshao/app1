@@ -1,10 +1,10 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import { postRouter } from "../post/post.router";
+
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (request: Request, response: Response) => {
-  response.send("hello");
-});
+app.use(postRouter);
 
 export default app;
