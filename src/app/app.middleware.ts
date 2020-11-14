@@ -9,6 +9,18 @@ export const logRequestURL = (
   next();
 };
 
+export const logRequestBody = (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  console.log({
+    body: request.body,
+    query: request.query,
+  });
+  next();
+};
+
 export const defaultErrorHandler = (
   error: any,
   request: Request,

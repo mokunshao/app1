@@ -5,6 +5,7 @@ import { defaultErrorHandler } from "../app/app.middleware";
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(postRouter);
 
