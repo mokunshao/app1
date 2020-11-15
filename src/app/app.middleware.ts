@@ -9,14 +9,16 @@ export const logRequestURL = (
   next();
 };
 
-export const logRequestBody = (
+export const logRequestData = (
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
   console.log({
+    url: request.url,
     body: request.body,
     query: request.query,
+    params: request.params,
   });
   next();
 };

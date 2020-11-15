@@ -1,8 +1,9 @@
 import express from "express";
 import { postController } from "./post.controller";
-import { logRequestBody, logRequestURL } from "../app/app.middleware";
+import { logRequestData, logRequestURL } from "../app/app.middleware";
 
 export const postRouter = express.Router();
 
 postRouter.get("/posts", logRequestURL, postController.index);
-postRouter.post("/posts", logRequestBody, postController.store);
+postRouter.post("/posts", logRequestData, postController.store);
+postRouter.patch("/posts/:postId", logRequestData, postController.update);
