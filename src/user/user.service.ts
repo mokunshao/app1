@@ -16,7 +16,7 @@ export const userService = {
       FROM user
       WHERE name = ?
     `;
-    const [data]: any = await connection.promise().query(statement, name);
+    const [data]: any[] = await connection.promise().query(statement, name);
     const user = data[0];
     return user;
   },
