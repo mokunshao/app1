@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { createPost, getPosts, updatePost } from "./post.service";
+import { createPost, deletePost, getPosts, updatePost } from "./post.service";
 import { removeObjectUndefined } from "../utils/functions";
 
 export const postController = {
@@ -28,6 +28,16 @@ export const postController = {
     removeObjectUndefined(post);
     try {
       const data = await updatePost(postId2, post);
+      response.send(data);
+    } catch (error) {
+      next(error);
+    }
+  },
+  destroy: async (request: Request, response: Response, next: NextFunction) => {
+    const { postId } = request.params;
+    const postId2 = parseInt(postId, 10);
+    try {
+      const data = await deletePost(postId2);
       response.send(data);
     } catch (error) {
       next(error);

@@ -7,3 +7,4 @@ export const postRouter = express.Router();
 postRouter.get("/posts", logRequestURL, postController.index);
 postRouter.post("/posts", logRequestData, postController.store);
 postRouter.patch("/posts/:postId", logRequestData, postController.update);
+postRouter.delete("/posts/:postId", postController.destroy);
