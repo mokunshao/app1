@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { createPost, getPosts, updatePost } from "./post.service";
+import { removeObjectUndefined } from "../utils/functions";
 
 export const postController = {
   index: async (request: Request, response: Response, next: NextFunction) => {
@@ -22,8 +23,11 @@ export const postController = {
   update: async (request: Request, response: Response, next: NextFunction) => {
     const { postId } = request.params;
     const { title, content } = request.body;
+    const postId2 = parseInt(postId, 10);
+    const post = { title, content };
+    removeObjectUndefined(post);
     try {
-      const data = await updatePost(parseInt(postId, 10), { title, content });
+      const data = await updatePost(postId2, post);
       response.send(data);
     } catch (error) {
       next(error);
