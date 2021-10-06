@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { userService } from "./user.service";
+import * as userService from "../user/user.service";
 import bcrypt from "bcrypt";
 
 export const userMiddleware = {
@@ -21,7 +21,7 @@ export const userMiddleware = {
 
     const user = await userService.getUserByName(name);
     if (user) {
-      next(new Error("USER_ALREADY_REQUIRED"));
+      next(new Error("USER_ALREADY_EXIST"));
       return;
     }
 
