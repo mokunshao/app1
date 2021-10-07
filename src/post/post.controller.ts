@@ -13,8 +13,9 @@ export const postController = {
   },
   store: async (request: Request, response: Response, next: NextFunction) => {
     const { title, content } = request.body;
+    const { id: userId } = request.user;
     try {
-      const data = await postService.createPost({ title, content });
+      const data = await postService.createPost({ title, content, userId });
       response.status(201).send(data);
     } catch (error) {
       next(error);
